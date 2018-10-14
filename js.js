@@ -103,7 +103,7 @@ window.onload = function() {
 }
 
 //перетаскивание работает крыво
-var dragging = null;
+let dragging = null;
 
 document.addEventListener('dragstart', function(event) {
         dragging = event.target;
@@ -112,10 +112,10 @@ document.addEventListener('dragstart', function(event) {
 
 document.addEventListener('dragover', function(event) {
     event.preventDefault();
-    //window.requestAnimationFrame(function(){
-        var bounding = event.target.getBoundingClientRect()
-      var offset = bounding.y + (bounding.height/2);
-      //добавляет синюю полосу
+    
+        let bounding = event.target.getBoundingClientRect()
+      let offset = bounding.y + (bounding.height/2);
+      
       if ( event.clientY - offset > 0 ) { 
         event.target.style['border-bottom'] = 'solid 4px blue';
         event.target.style['border-top'] = '';
@@ -123,9 +123,7 @@ document.addEventListener('dragover', function(event) {
         event.target.style['border-top'] = 'solid 4px blue';
         event.target.style['border-bottom'] = '';
       }
-    //});
 });
-//сбрасывает стиль с синей полосой
 document.addEventListener('dragleave', function(event) {
     event.target.style['border-bottom'] = '';
     event.target.style['border-top'] = '';
