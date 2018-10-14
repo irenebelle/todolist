@@ -12,9 +12,7 @@ window.onload = function() {
             newItem.setAttribute('class', 'todoListItem');
             newItem.setAttribute('draggable', 'true');
             newItem.setAttribute('id', id);
-            // newItem.style.top = top;
-            // newItem.style.left = left;
-            // newItem.style.position = 'absolute';
+           
             newItem.textContent = todo;
 
             let newItemCheckbox = document.createElement('input');
@@ -108,25 +106,25 @@ window.onload = function() {
             }
 }
 
-//перетаскивание работает крыво
+//перетаскивание 
 let dragging = null;
 
 document.addEventListener('dragstart', function(event) {
-        dragging = event.target;
+    dragging = event.target;
     event.dataTransfer.setData('text/html', dragging);
 });
 
 document.addEventListener('dragover', function(event) {
     event.preventDefault();
     
-        let bounding = event.target.getBoundingClientRect()
+      let bounding = event.target.getBoundingClientRect()
       let offset = bounding.y + (bounding.height/2);
       
       if ( event.clientY - offset > 0 ) { 
-        event.target.style['border-bottom'] = 'solid 4px blue';
+        event.target.style['border-bottom'] = 'solid 4px orange';
         event.target.style['border-top'] = '';
       } else {
-        event.target.style['border-top'] = 'solid 4px blue';
+        event.target.style['border-top'] = 'solid 4px orange';
         event.target.style['border-bottom'] = '';
       }
 });
