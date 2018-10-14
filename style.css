@@ -10,8 +10,8 @@ body {
 	border: 1px solid #ccc;
 	margin: auto auto;
 	display: block;
-		border-radius: 10px;
-		position: relative;
+	border-radius: 10px;
+	position: relative;
 	
 }
 
@@ -21,6 +21,7 @@ body {
 	background-color: #eee;
 	padding: 5px;
 	margin-bottom: 1px;
+	line-height: 30px;
 
 }
 
