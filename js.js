@@ -109,12 +109,12 @@ window.onload = function() {
 //перетаскивание 
 let dragging = null;
 
-document.addEventListener('dragstart', function(event) {
+document.querySelector('#todoListContainer').addEventListener('dragstart', function(event) {
     dragging = event.target;
     event.dataTransfer.setData('text/html', dragging);
 });
 
-document.addEventListener('dragover', function(event) {
+document.querySelector('#todoListContainer').addEventListener('dragover', function(event) {
     event.preventDefault();
     
       let bounding = event.target.getBoundingClientRect()
@@ -128,13 +128,13 @@ document.addEventListener('dragover', function(event) {
         event.target.style['border-bottom'] = '';
       }
 });
-document.addEventListener('dragleave', function(event) {
+document.querySelector('#todoListContainer').addEventListener('dragleave', function(event) {
     event.target.style['border-bottom'] = '';
     event.target.style['border-top'] = '';
 });
 
 
-document.addEventListener('drop', function(event) {
+document.querySelector('#todoListContainer').addEventListener('drop', function(event) {
     event.preventDefault();
     if ( event.target.style['border-bottom'] !== '' ) {
       event.target.style['border-bottom'] = '';
