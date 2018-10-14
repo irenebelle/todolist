@@ -48,15 +48,21 @@ window.onload = function() {
         document.querySelector('#add').onclick = function() {
         let inputValue = document.querySelector('#in').value;
         if(inputValue!='') {
-            let id=0; let top='150px';
+            let id=0; 
             //определяем id i top нового элемента
             if (todoList.length != 0)   {
-                id = +todoList[todoList.length - 1].id.substring(2) + 1;
-                top = parseInt(todoList[todoList.length - 1].top)+41+'px';
+                let max=0;
+                for(let i=0; i<todoList.length; i++){
+                   if(todoList[i].id.substring(2) > max)
+                   {
+                     max = todoList[i].id.substring(2);
+                   }
+                }
+                id = +max+1;
              }
 
-            createItem('id' + id, top, '0px', inputValue, false);
-            todoList.push({ id: 'id' + id, todo: inputValue, check: false, top:top, left:0});
+            createItem('id' + id, '0px', '0px', inputValue, false);
+            todoList.push({ id: 'id' + id, todo: inputValue, check: false, top:0, left:0});
             //renderList();
             localStorage.setItem('todo', JSON.stringify(todoList));
             document.querySelector('#in').value = '';
@@ -138,9 +144,21 @@ document.addEventListener('drop', function(event) {
     } else {
       event.target.style['border-top'] = '';
       event.target.parentNode.insertBefore(dragging, event.target);
-            console.log(event.target.getBoundingClientRect() + event.target.id);
 
     }
+
+    let tdItems = document.querySelectorAll('.todoListItem'); 
+    let newArray = [];
+    for(let i=0; i<tdItems.length; i++) {
+       
+      newArray.push({id: tdItems[i].id, todo: tdItems[i].textContent, check: tdItems[i].firstChild.nextSibling.checked, top:0, left: 0});
+      todoList = newArray;
+      
+    }
+    localStorage.setItem('todo', JSON.stringify(todoList));
+
+
+
 });
     
 
